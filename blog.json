@@ -4,13 +4,9 @@
     "description": "developer and wanna be writer"
   },
   "basics": {
-    "name": "Thomas aDavis"
+    "name": "Thomas (Ajax) Davis"
   },
   "posts": [
-    {
-      "title": "Local test",
-      "source": "./test.md"
-    },
     {
       "title": "Introducing JSON Blog",
       "source": "https://gist.github.com/thomasdavis/db7db8d07ccb086504261802edf3069a/raw/introducing.md",
