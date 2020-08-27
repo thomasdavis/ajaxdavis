@@ -9,8 +9,7 @@
   "posts": [
     {
       "title": "Introducing JSON Blog",
-      "source": "https://gist.github.com/thomasdavis/db7db8d07ccb086504261802edf3069a/raw/introducing.md",
-      "source": "./test.md"
+      "source": "https://gist.github.com/thomasdavis/db7db8d07ccb086504261802edf3069a/raw/introducing.md?cb=1"
     },
     {
       "title": "Organizing your application using Modules (require.js)",
