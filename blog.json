@@ -8,16 +8,24 @@
   },
   "posts": [
     {
+      "title": "An Open Source Computer vision model to identify the Australian Aboriginal Flag [Tutorial]",
+      "source": "https://raw.githubusercontent.com/australia/aboriginal-flag-cv-model/master/README.md",
+      "publishedDate": "2020-09-05"
+    },
+    {
       "title": "Introducing JSON Blog",
-      "source": "https://gist.github.com/thomasdavis/db7db8d07ccb086504261802edf3069a/raw/introducing.md?cb=1"
+      "source": "https://gist.github.com/thomasdavis/db7db8d07ccb086504261802edf3069a/raw/introducing.md?cb=1",
+      "publishedDate": "2020-08-05"
     },
     {
       "title": "Organizing your application using Modules (require.js)",
-      "source": "https://raw.githubusercontent.com/thomasdavis/backbonetutorials/gh-pages/_posts/2011-10-10-organizing-backbone-using-modules.md"
+      "source": "https://raw.githubusercontent.com/thomasdavis/backbonetutorials/gh-pages/_posts/2011-10-10-organizing-backbone-using-modules.md",
+      "publishedDate": "2014-04-16"
     },
     {
       "title": "Markdown Example",
-      "source": "https://gist.githubusercontent.com/thomasdavis/03b712d36272c9e79535c583bf8e70b8/raw/1aa2f00e62ac85d1f51d0792facb1af8db4b6ef3/second.md"
+      "source": "https://gist.githubusercontent.com/thomasdavis/03b712d36272c9e79535c583bf8e70b8/raw/1aa2f00e62ac85d1f51d0792facb1af8db4b6ef3/second.md",
+      "publishedDate": "2014-04-16"
     }
   ],
   "pages": [
