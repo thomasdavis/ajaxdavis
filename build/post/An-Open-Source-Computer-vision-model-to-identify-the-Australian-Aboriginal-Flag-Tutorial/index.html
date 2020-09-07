@@ -38,7 +38,7 @@
 <p>(Just a quick shout out to my mob, the <a href="https://en.wikipedia.org/wiki/Kuku_Yalanji">Kuku Yalanji</a> people of Far North Queensland)</p>
 <p>Over the years I've been trying to learn machine learning but never got anywhere because I couldn't think of a use case. I recently read a cool post from <a href="https://clothingthegap.com.au/pages/aboriginal-flag-timeline">Clothing The Gap</a> which gives an overview of the current copyright debate. They had an image that contains the &quot;Aboriginal flag&quot; done by a European artist several years earlier and how this could maybe be used to invalidate copyright as the design was perhaps already in existence. This gave me the idea to think about if there were perhaps other artworks throughout history that may have contained the flag design.</p>
 <p>My main idea was that if I could use machine learning to train a computer vision model to find Aboriginal flags. I could then run it over historical archives of images/paintings to see if I can find any other places the Aboriginal flag seemingly appeared throughout history. Such that in a court case one might overturn the copyright by simply saying they were printing an &quot;Indonesian symbol from the 14th century&quot; (just a potential example)</p>
-<p><img src="https://i.imgur.com/9BuOp46.jpg" alt="asdas"></p>
+<p><img src="https://i.imgur.com/nJwFE7K.jpg" alt="asdas"></p>
 <p>If you look at the top left of the image, you will see an Aboriginal flag in this painting. I considered my model training a success once it could find the flag in this sample</p>
 <p>It does actually work and as you can see in the above image, the model is able to draw a bounding box around the &quot;flag&quot;.</p>
 <p>I've only scanned 100,000 historical images so far and yet to find any pre-existing artworks that contain the flag. I still have a couple of million images to get through and hope to add a couple million more.</p>
@@ -213,6 +213,7 @@ cv2.waitKey(<span class="hljs-number">0</span>)
 <p>The difficulty of trying to identify objects differs by magnitudes depending on what you are trying to achieve.</p>
 <p>Again, all feedback is welcome on the <a href="https://github.com/australia/aboriginal-flag-cv-model">repo</a> or just <a href="mailto:thomasalwyndavis@gmail.com">contact me</a>.</p>
 <p>p.s. do not invent Skynet</p>
+<p>Thanks to <a href="https://www.linkedin.com/in/andrew-burchill-9a42956">Andred Burchill</a> for testing.</p>
 
 
     </div>
