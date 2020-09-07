@@ -33,26 +33,31 @@
 
     <div class="content">
       <h1>An Open Source Computer vision model to identify the Australian Aboriginal Flag</h1>
+<blockquote>
+<p>This project was based off a <a href="https://news.ycombinator.com/item?id=24187794">Hacker News discussion</a>, thank you for all your input!</p>
+</blockquote>
 <p>I've been recently paying attention to the <a href="https://clothingthegap.com.au/pages/free-the-flag">#freetheflag</a> debate, in short;</p>
 <blockquote>
 <p>The Aboriginal flag <a href="https://www.legislation.gov.au/Details/F2008L00209">of Australia</a> is widely used by indigenous Australians as a symbol of their heritage. Though, the flag is actually copyrighted by an <a href="https://aiatsis.gov.au/explore/articles/aboriginal-flag#:~:text=Flag%20copyright,the%20author%20of%20the%20flag.&amp;text=The%20copyright%20license%20for%20the,to%20Carroll%20and%20Richardson%20Flags.">indigenous individual</a> who has exclusive control of the licensing rightfully. This has become a debate because a lot of Aboriginals believe they should have a right to print or copy the Aboriginal flag as they would like.</p>
 </blockquote>
-<p>Over the years I've been trying to learn machine learning but never got anywhere because I couldn't think of a use case. I recently read a cool resource from <a href="https://clothingthegap.com.au/pages/aboriginal-flag-timeline">Clothing The Gap</a>, which explains the current copyright debate on a timeline. They had an image that contains the Aboriginal flag done by a European artist several years earlier and how this could maybe be used to invalidate copy right as the design was perhaps already in existence. This gave me the idea to think about if there was perhaps other artworks throughout history that may have contained the flag design.</p>
-<p>So my main idea was that if I could use machine learning to train a model and then run it over historical archives of images/paintings to see if I can find any other places the Aboriginal flag seemingly appeared throughout history.</p>
+<p>Over the years I've been trying to learn machine learning but never got anywhere because I couldn't think of a use case. I recently read a cool post from <a href="https://clothingthegap.com.au/pages/aboriginal-flag-timeline">Clothing The Gap</a> which gives an overview of the current copyright debate on a timeline. They had an image that contains the Aboriginal flag done by a European artist several years earlier and how this could maybe be used to invalidate copy right as the design was perhaps already in existence. This gave me the idea to think about if there were perhaps other artworks throughout history that may have contained the flag design.</p>
+<p>My main idea was that if I could use machine learning to train a computer vision model to find Aboriginal flags. I could then run it over historical archives of images/paintings to see if I can find any other places the Aboriginal flag seemingly appeared throughout history. Such that in a court case one might over turn the copy right by simply saying they were printing an &quot;Indonesian symbol from the 14th century&quot; (just a potential example)</p>
 <p><img src="https://i.imgur.com/9BuOp46.jpg" alt="asdas"></p>
-<p>If you look in the top left of the image, you will see an Aboriginal flag in this painting. I considered my model a success once it could find the flag in this sample</p>
+<p>If you look in the top left of the image, you will see an Aboriginal flag in this painting. I considered my model training a success once it could find the flag in this sample</p>
 <p>It does actually work and as you can see in the above image, the model is able to draw a bounding box around the &quot;flag&quot;.</p>
 <p>I've only scanned 100,000 historical images so far and yet to find any pre-existing artworks that contain the flag. I still have a couple million images to get through and hope to add a couple million more.</p>
-<p>But here is a gallery of false positives, images that the model thought were aboriginal flags but not quite... (if you look at the image for long enough you can see why maybe the model thought it was an aboriginal flag)</p>
+<p>But here is a gallery of false positives, images that the model thought were aboriginal flags but not quite... (if you look at the images for long enough you can see why maybe the model thought it was an aboriginal flag)</p>
 <p><a href="https://imgur.com/a/Q22VnGK">Results</a></p>
-<p>I will keep working on it to improve the results, all of the code is open source and free to use.</p>
-<p>The rest of this post is for people who would like to run the code themselves and learn how to train an object recognition model. It is less than 20 lines of code in total and I've made everything as simple as possible with all resources available in the repo.</p>
-<p>You need to know a bit of programming, not much, just a junior level of understanding. Knowing a little Python would be great but it is also an easy language to understand.</p>
+<p>I've also saved some of the resulting data in a <a href="https://airtable.com/shrHq7PG7CF7axGB4">table</a> for anyone who wants to take a closer look.</p>
+<p>I will keep working on the project to improve the results, and all of the code is open source and free to use.</p>
+<p>The rest of this post is for people who would like to run the code themselves and learn how to train an object recognition model from scratch. It is less than 20 lines of code in total and I've made everything as simple as possible with all resources available in the repo.</p>
 <p>If anyone would like to help me train a better model then please <a href="mailto:thomasalwyndavis@gmail.com">reach out</a>!</p>
 <h2>Technical</h2>
-<p>I had no idea how I might train a model to do this, and managed to do it in a week, it is super easy for anyone with a bit of programming knowledge. But the CV community is big and beautiful so after wrestling with Tensorflow (Don't recommend for beginners) I got my idea working with PyTorch in a night.</p>
-<p>This tutorial is self contained and can be found in the <a href="https://github.com/australia/aboriginal-flag-cv-model">repo</a>. It is only around 20 lines of code so don't be intimidated. I also had a problem with the complexity of the language in the CV community so I'm going to purposely over simplify things here.</p>
-<p>This is super easy and you could likely have it working in an hour or two. (Then add ML to your <a href="https://jsonresume.org">resume</a>)</p>
+<p>I had no prior experience in computer vision, so I had no idea how I might train a model to do this. I managed to do it in a week, it is super easy for anyone with a bit of programming knowledge. The CV community is big and beautiful and I managed to get my idea working with PyTorch in a night. (I spent a few nights on Tensorflow and didn't get very far)</p>
+<p>This tutorial is self contained and can be found in the <a href="https://github.com/australia/aboriginal-flag-cv-model">repo</a>.</p>
+<p>Again, the tutorial contains very little code thanks to a few open source projects it depends on.</p>
+<p>I also had a problem with the complexity of the language in the CV community so I'm going to purposely over simplify things here.</p>
+<p>This is super easy and you could likely have it working in under an hour. (Then add ML to your <a href="https://jsonresume.org">resume</a>)</p>
 <p>We are going to split the tutorial into three steps;</p>
 <ol>
 <li><strong>Classification</strong> - We need to manually draw boxes around the objects we are looking for in some sample images. The machine learning will use this human curated data to train itself.</li>
@@ -108,6 +113,7 @@ pip3 install -r requirements.txt
 <p>We point PyTorch/Detecto at our classified data set and it should spit out a <code>model.pth</code> which we will use later to find our object (flag) in samples.</p>
 <p>What really makes this whole tutorial so easy is the fact we will be using a python library called <a href="https://github.com/alankbi/detecto">Detecto</a> written by <a href="https://github.com/alankbi/">Alan Bi</a> (thanks man, beautiful job)</p>
 <p>The entire code to go from <code>dataset</code>(folder of images and XML) to <code>reusable object recognition model</code> is below.</p>
+<p>WARNING: You might need a decent computer to even run 3 epochs let alone 6 so if you just want to get a copy of a decently trained model, just download my <a href="https://drive.google.com/file/d/1WrL1lV85njUwLR_pYaDD7fh1TV0lFKEN/view?usp=sharing">pre-trained model.pth</a></p>
 <pre class="hljs"><code><span class="hljs-comment"># train.py</span>
 
 <span class="hljs-comment"># Import detecto libs, the lib is great and does all the work</span>
@@ -116,6 +122,7 @@ pip3 install -r requirements.txt
 <span class="hljs-keyword">from</span> detecto.core <span class="hljs-keyword">import</span> Model
 
 <span class="hljs-comment"># Load all images and XML files from the Classification section</span>
+<span class="hljs-comment"># or point it at &quot;images&quot; if you classified your own</span>
 dataset = core.Dataset(<span class="hljs-string">&#x27;images_classified/&#x27;</span>)
 
 <span class="hljs-comment"># We initalize the Model and map it to the label we used in labelImg classification</span>
@@ -127,7 +134,7 @@ model = Model([<span class="hljs-string">&#x27;aboriginal_flag&#x27;</span>])
 <span class="hljs-comment"># you will probably have to rent a bigger box for a few hours to get this to run on.</span>
 <span class="hljs-comment"># Epochs essentially means iterations, the more the merrier (accuracy) (up to a limit)</span>
 <span class="hljs-comment"># It will take quite a while for this process to end, grab a wine.</span>
-model.fit(dataset, epochs=<span class="hljs-number">10</span>, verbose=<span class="hljs-literal">True</span>)
+model.fit(dataset, epochs=<span class="hljs-number">6</span>, verbose=<span class="hljs-literal">True</span>)
 
 <span class="hljs-comment"># TIP: The more images you classify and the more epochs you run, the better your results will be.</span>
 
@@ -201,10 +208,10 @@ cv2.waitKey(<span class="hljs-number">0</span>)
 <p>That is all there is really, you obviously can just take the outputted prediction data (boxes and scores) and save it to where ever you would like e.g. a database.</p>
 <p>If something didn't work feel free to complain in the tutorial repo <a href="https://github.com/australia/aboriginal-flag-cv-model/issues">issues</a>.</p>
 <h3>Conclusion</h3>
-<p>I do hope it worked, those steps above worked for me. I drew an Aboriginal flag on paper and took selfies at many algorithms and the model picked it up. (I manually classified 150 images instead of 40 though) (and if I call recall correctly, around 20 epochs)</p>
-<insert selfie with paper flag here>
+<p>I do hope it worked, those steps above worked for me. I drew an Aboriginal flag on paper and took selfies at many angles and the model picked it up. (I manually classified 150 images instead of 40 though) (and if I call recall correctly, around 10 epochs)</p>
+<p><img src="https://i.imgur.com/Xcg422N.png" alt="ajax davis"></p>
 <p>This tutorial is meant to be a complete noob guide (written by a noob), how I've described things and the way they are in computer vision - are two different things.</p>
-<p>Though this task has allowed me to introduce myself to the computer vision sector and I'm sure I will learn more over time.</p>
+<p>This task has allowed me to introduce myself to the computer vision sector and I'm sure I will learn more over time.</p>
 <p>The difficulty of trying to identify objects differs by magnitudes depending on what you are trying to achieve.</p>
 <p>Again, all feedback is welcome on the <a href="https://github.com/australia/aboriginal-flag-cv-model">repo</a> or just <a href="mailto:thomasalwyndavis@gmail.com">contact me</a>.</p>
 <p>p.s. do not invent Skynet</p>
